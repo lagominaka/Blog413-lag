@@ -6,10 +6,9 @@ require_once VIEWS.'\components\header.php';
 
                <div class="col-12">
 
-                   <h3><?= $header ?? "" ?></h3>
+                  <h3>404 - Page not fouund</h3>
 
                   </div>
-                  <!-- <? require_once VIEWS.'\components\sidebar.php';?> -->
                </div>
               
          </main>
