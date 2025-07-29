@@ -7,6 +7,9 @@ $uri = trim(parse_url($_SERVER['REQUEST_URI'])['path'],'/');
 if(array_key_exists($uri, $routes) && file_exists(CONTROLLERS."/posts/$routes[$uri]")) {
    require_once CONTROLLERS."/posts/$routes[$uri]";
 }
+if(array_key_exists($uri, $routes) && file_exists(CONTROLLERS."/users/$routes[$uri]")) {
+   require_once CONTROLLERS."/users/$routes[$uri]";
+}
 else {
    abort();
 }

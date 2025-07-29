@@ -8,6 +8,8 @@ define("VIEWS", APP . '/views');
 define("CONTROLLERS", APP . '/controllers');
 define("COMPONENTS", VIEWS . '/components');
 define("POSTS_VIEWS", VIEWS . '/posts');
+define("USERS_VIEWS", VIEWS . '/users');
+
 
 
 define("CONFIG", ROOT . '/config');

@@ -9,4 +9,5 @@ $routes =[
    'posts' => 'show.php',
    'create' => 'create.php',
    'store' => 'create.php',
+   'storage' => 'registration.php',
 ];
