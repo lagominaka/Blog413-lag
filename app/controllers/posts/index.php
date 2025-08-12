@@ -1,4 +1,6 @@
 <?
+global $db;
+
 $title = 'Blog Home';
 $header = 'Recent posts';
 
@@ -8,6 +10,4 @@ $posts = $db->query($sql)->findAll();
 $sql = "SELECT * FROM posts ORDER BY rating DESC LIMIT 5";
 $most_popular_posts = $db->query($sql)->findAll();
 
-require_once POSTS_VIEWS.'\index.tmpl.php';
-?>
-
+require_once POSTS_VIEWS . '\index.tmpl.php';
