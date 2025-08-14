@@ -6,7 +6,8 @@ require_once VIEWS . '\components\header.php';
 
       <div class="col-10">
 
-         <h3><?= $header ?? "" ?></h3>
+         <h1><?= $header ?? "" ?></h1>
+         <h3><?= htmlspecialchars($title) ?></h3>
          <div><?= $post['content'] ?></div>
 
          <div class="row col-3">

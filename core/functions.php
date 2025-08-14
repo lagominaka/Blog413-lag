@@ -42,6 +42,7 @@ function len($str)
 {
     return mb_strlen($str, 'UTF-8');
 }
+
 function getAlerts()
 {
     function getAlert($alert = 'info')
@@ -58,17 +59,20 @@ function getAlerts()
         "warning",
     ];
 
-    if (!empty($_SESSION)) : ?>
-        <div class="container">
-            <? foreach ($_SESSION as $key => $value):
-                if (in_array($key, $alerts)):
-                    getAlert($key);
-                    unset($_SESSION[$key]);
-                endif;
-            endforeach; ?>
+    if (!empty($_SESSION)) :?>
+    <div class="container">
+        <?foreach ($_SESSION as $key => $value):
+            if (in_array($key, $alerts)):                 
+                 getAlert($key);  
+                 unset($_SESSION[$key]);               
+             endif;
+        endforeach;?>
         </div>
-<? endif;
+    <?endif;
+
+   
 }
+
 function redirect($url = '')
 {
     if ($url) {

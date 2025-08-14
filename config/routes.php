@@ -9,7 +9,8 @@ $router->get("posts", "/posts/show.php"); //один из ресурсов
 $router->get("posts/create", "/posts/create.php"); //форма создания нового маршрута
 $router->post("posts", "/posts/store.php");
 $router->get("posts/edit", "/posts/edit.php");
-
+$router->post("posts/update", "/posts/update.php");
+$router->get("posts/show", "/posts/show.php");
 
 $router->get("contacts", "/contacts.php");
 $router->delete("posts", "/posts/destroy.php");

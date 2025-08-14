@@ -1,28 +1,69 @@
 <?php
 global $db;
+require_once CLASSES . '\Validator.php';
 
-$post_id = $_GET['id'] ?? null;
+// Проверяем, что запрос отправлен методом POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo "Invalid request method.";
+    exit;
+}
+
+// Получаем ID поста из POST-параметра
+$post_id = $_POST['post_id'] ?? null;
+
 if (!$post_id) {
-    die("ID не указан");
+    echo "The ID of the update post is not specified.";
+    exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = $_POST['title'] ?? '';
-    $descr = $_POST['descr'] ?? '';
-    $content = $_POST['content'] ?? '';
+// Получаем данные поста из БД, чтобы проверить, существует ли он
+$sql = "SELECT * FROM posts WHERE post_id = ?";
+$post = $db->query($sql, [$post_id])->find();
 
-    // Валидация данных (пример)
-    if (empty($title) || empty($descr) || empty($content)) {
-        die("Заполните все поля");
+if (!$post) {
+    echo "The post was not found.";
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $fillable = ['title', 'descr', 'content'];
+    $data = loadRequestData($fillable);
+    $rules = [
+        'title' => [
+            'required' => true,
+            'min' => 3,
+            'max' => 50,
+        ],
+        'descr' => [
+            'required' => true,
+            'min' => 5,
+            'max' => 50,
+        ],
+        'content' => [
+            'required' => true,
+            'min' => 5,
+        ],
+    ];
+    $validator = new Validator();
+    $validator->validate($data, $rules);
+
+    if (!$validator->hasErrors()) {
+        $data['slug'] = str_replace(" ", "-", $data['title']);
+        $sql = "UPDATE posts SET title = ?, slug = ?, descr = ?, content = ? WHERE post_id = ?";
+        
+        if ($db->query($sql, [$data['title'], $data['slug'], $data['descr'], $data['content'], $post_id])) {
+            header("Location: /posts/show?id={$post_id}"); // перенаправляем на страницу просмотра поста
+            exit;
+        } else {
+            echo "Error updating the post.";
+        }
+    } else {
+        $_SESSION['errors'] = $validator->getErrors();
+        header("Location: /posts/edit?id={$post_id}");
+        exit;
     }
-
-    // Подготовленный запрос
-    $stmt = $db->prepare('UPDATE posts SET title = ?, descr = ?, content = ? WHERE post_id = ?');
-    $stmt->execute([$title, $descr, $content, $post_id]);
-
-    // Редирект на страницу просмотра поста (или другую)
-    header('Location: /posts/update?id=' . $post_id); // Предполагается, что у вас есть маршрут для просмотра поста
-    exit();
-} else {
-    die("Недопустимый метод запроса");
 }
+
+header("Location: /posts/edit?id={$post_id}");
+exit;
+?>

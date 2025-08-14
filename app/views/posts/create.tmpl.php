@@ -2,8 +2,8 @@
 require_once VIEWS . '\components\header.php';
 ?>
 <main class="container py-3">
-  <div class="container row">
-
+  <div class="row">
+    <h3>New post</h3>
     <div class="col-10">
 
       <h3><?= $header ?? "" ?></h3>

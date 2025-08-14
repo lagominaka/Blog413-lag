@@ -9,6 +9,5 @@ if (array_key_exists($uri, $routes) && file_exists(CONTROLLERS . "/posts/$routes
 }
 if (array_key_exists($uri, $routes) && file_exists(CONTROLLERS . "/users/$routes[$uri]")) {
    require_once CONTROLLERS . "/users/$routes[$uri]";
-} else {
-   abort();
 }
+   abort();

@@ -31,9 +31,11 @@
               <a class="nav-link" href="posts/create">New Post</a>
             </li>
           </ul>
-          <a href="users" class="btn btn-success registration-button" role="button">Registration</a>
-
+          <div class="ms-auto">
+            <a href="users" class="btn btn-success registration-button" role="button">Registration</a>
+          </div>
         </div>
       </div>
     </nav>
+  
     <? getAlerts(); ?>

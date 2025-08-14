@@ -5,15 +5,11 @@ require_once VIEWS . '\components\header.php';
    <div class="container row">
 
       <div class="col-10">
-
          <h3><?= $header ?? "" ?></h3>
-
       </div>
-
-      <? require_once VIEWS . '\components\sidebar.php'; ?>
-
-   </div>
-   </div>
+         <? require_once VIEWS . '\components\sidebar.php'; ?>
+       </div>
+    </div>
 </main>
 <?
 require_once VIEWS . '\components\footer.php';
