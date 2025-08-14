@@ -52,10 +52,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "UPDATE posts SET title = ?, slug = ?, descr = ?, content = ? WHERE post_id = ?";
         
         if ($db->query($sql, [$data['title'], $data['slug'], $data['descr'], $data['content'], $post_id])) {
-            header("Location: /posts/show?id={$post_id}"); // перенаправляем на страницу просмотра поста
-            exit;
+            
+            $_SESSION['success'] = "The post has been successfully changed.";
+            redirect(PATH);
+            
         } else {
-            echo "Error updating the post.";
+            $_SESSION['warning'] = "Error updating the post.";
+            redirect('');
+            
         }
     } else {
         $_SESSION['errors'] = $validator->getErrors();

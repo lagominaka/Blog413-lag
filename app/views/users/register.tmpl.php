@@ -10,7 +10,7 @@ require_once VIEWS . '\components\header.php';
         <div class="mt-2">
           <label for="login" class="form-label">Login</label>
           <input type="text" class="form-control" id="login" name="login" value="<?= htmlspecialchars($form_data['login'] ?? '') ?>">
-          <div id="emailHelp" class="form-text"></div>
+          <div id="loginHelp" class="form-text">The password must be at least 5 characters long.</div>
           <?= isset($validator) ? $validator->listErrors('login') : "" ?>
         </div>
 

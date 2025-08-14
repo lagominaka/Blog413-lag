@@ -39,16 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!$validator->hasErrors()) {
         $sql = "UPDATE posts SET title = ?, descr = ?, content = ? WHERE id = ?";
         $data['slug'] = str_replace(" ", "-", $data['title']);
-        
-            if ($db->query($sql, [$data['title'], $data['descr'], $data['content'], $id])) {
-
-                $_SESSION['success'] = "The post has been successfully changed.";
-                redirect(PATH . "/posts/show" . $id); // страница просмотра поста
-               
-            } else {
-                $_SESSION['warning'] = "DB Error";
-                redirect('');
-            }
     }
 }
 

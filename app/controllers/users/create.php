@@ -10,11 +10,7 @@ unset($_SESSION['form_data']);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fillable = ['login', 'email', 'password', 'password_confirmation'];
     $data = loadRequestData($fillable);
-    
-    $data['login'] = trim(strtolower($data['login']));
-    $data['email'] = trim(strtolower($data['email']));
 
-    // dd($data);
     $rules = [
         'login' => [
             'required' => true,
@@ -41,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $validator = new Validator();
     $validator->validate($data, $rules);
 
+  
 
     if (!$validator->hasErrors()) {
         $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
