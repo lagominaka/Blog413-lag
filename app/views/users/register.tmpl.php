@@ -74,6 +74,7 @@ require_once VIEWS . '\components\header.php';
   });
 </script>
 
+
 <?
 require_once VIEWS . '\components\footer.php';
 ?>

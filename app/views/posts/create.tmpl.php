@@ -4,9 +4,7 @@ require_once VIEWS . '\components\header.php';
 <main class="container py-3">
   <div class="row">
     <h3>New post</h3>
-    <div class="col-10">
-
-      <h3><?= $header ?? "" ?></h3>
+    <div class="col-10">     
       <form action="posts" method="POST">
         <!-- заголовок -->
         <div class="mb-3">
