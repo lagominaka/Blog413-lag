@@ -61,5 +61,9 @@ class DB
          abort();
       }
       return $result;
-   }
+      }
+   
+  function rowCount() {
+   return $this ->stmt->rowCount();
+  }
 }

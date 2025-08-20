@@ -1,4 +1,4 @@
-<script>
+
  document.addEventListener('DOMContentLoaded', function() {
     // Находим все элементы с классом password-checkbox
     const checkboxes = document.querySelectorAll('.password-checkbox');
@@ -19,5 +19,5 @@
       });
     });
   });
-</script>
+
 

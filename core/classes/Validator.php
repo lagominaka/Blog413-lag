@@ -13,7 +13,6 @@ class Validator
         'min' => "The :fieldname: field must be a minumum of :rule_value: characters",
         'max' => "The :fieldname: field must be a maximum of :rule_value: characters",
         'email' => 'Not valid email',
-        'email' => 'The user with this address already exists.',
         'login' => 'The user with this username already exists.',
         'match' => 'The :fieldname: field must match :rulevalue: field',
         'validatePassword' => ':password_errors:',

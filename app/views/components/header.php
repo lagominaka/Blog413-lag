@@ -33,7 +33,10 @@
           </ul>
           <div class="ms-auto">
             <a href="users" class="btn btn-success registration-button" role="button">Registration</a>
-          </div>
+           </div>
+          <div class="ms-auto">
+            <a href="users/login" class="btn btn-success" role="button">Log in</a>
+            </div>
         </div>
      
     </nav>

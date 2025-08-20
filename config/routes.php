@@ -19,6 +19,9 @@ $router->delete("posts", "/posts/destroy.php");
 
 $router->get("users", "/users/create.php");
 $router->post("users", "/users/create.php");
+$router->get("users/login", "/users/login.php");
+$router->post("users/login", "/users/login.php");
+$router->get("users/forgot-password", "/users/forgot-password.php");
 
 
 //USERS
