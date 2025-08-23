@@ -3,8 +3,6 @@ global $db;
 
 require_once CLASSES . '\Validator.php';
 
-
-
 $title = $header = "New Post";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -35,20 +33,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ],
         'password_confirm' => [
             'match' => 'password',
-        ],
+        ]
 
     ];
     $validator = new Validator();
     $validator->validate($data, $rules);
-
+// dd($validator);
     if (!$validator->hasErrors()) {
-        
+
         $sql = "INSERT INTO `posts`(`title`, `slug`, `descr`, `content`) VALUES (?,?,?,?)";
         $data['slug'] = str_replace(" ", "-", $data['title']);
+        // dd($data);
 
         if ($db->query($sql, [$data['title'], $data['slug'], $data['descr'], $data['content']])) {
 
             $_SESSION['success'] = "Post created";
+           
             redirect(PATH);
         } else {
             $_SESSION['warning'] = "DB Error";

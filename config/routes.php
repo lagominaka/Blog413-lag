@@ -10,7 +10,7 @@ $router->get("posts/create", "/posts/create.php"); //форма создания
 $router->post("posts", "/posts/store.php");
 $router->get("posts/edit", "/posts/edit.php");
 $router->post("posts/update", "/posts/update.php");
-$router->get("posts/show", "/posts/show.php");
+// $router->get("posts/show", "/posts/show.php");
 
 $router->get("contacts", "/contacts.php");
 $router->delete("posts", "/posts/destroy.php");
@@ -21,8 +21,8 @@ $router->get("users", "/users/create.php");
 $router->post("users", "/users/create.php");
 $router->get("users/login", "/users/login.php");
 $router->post("users/login", "/users/login.php");
-$router->get("users/forgot-password", "/users/forgot-password.php");
-
+$router->get("users/reset-password", "/users/reset-password.php");
+$router->post("users/reset-password", "/users/reset-password.php");
 
 //USERS
 // Verb   URI                  Action          Route Name
@@ -34,9 +34,3 @@ $router->get("users/forgot-password", "/users/forgot-password.php");
 
 // PUT/PATCH    /photos/{photo} update          photos.update
 // DELETE   /photos/{photo} destroy photos.destroy
-
-
-// $postId = 123; // Замените на актуальный ID поста
-// $editUrl = "posts/edit?id=" . $postId;
-
-// echo "<a href='" . $editUrl . "'>Редактировать пост</a>";

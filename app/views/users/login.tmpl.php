@@ -21,15 +21,15 @@ require_once VIEWS . '\components\header.php';
           <?= isset($validator) ? $validator->listErrors('password') : "" ?>
           <label>
           <input type="checkbox" class="password-checkbox" data-password-field="password">
-          Показать пароль
+          Show password
         </label><br>   
-          <a href="users/forgot-password">Забыли пароль?</a><br>
+          <a href="users/reset-password">Forgot your password?</a><br>
 
         </div>
         <button type="submit" class="btn btn-primary" name="log_btn" value="login">Login</button>
         <p class="mt-3">
 
-          У вас нет аккауна? - <a href="users">Зарегистрируйтесь</a>!
+         Don't you have an account? - <a href="users">Register</a>!
           </p>
       </form>
     </div>

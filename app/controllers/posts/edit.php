@@ -1,16 +1,11 @@
 <?php
 global $db;
 // Получаем ID поста из GET-параметра
-$id = (int)$_GET['id'] ?? 0;
+$id = (int) $_GET['id'] ?? 0;
 $sql = "SELECT * FROM posts WHERE post_id = ? LIMIT 1";
 $post = $db->query($sql, [$id])->findOrAbort();
 
-// Если пост не найден, сообщаем об этом и остаемся на странице
-if (!$post) {
-    $_SESSION['warning'] = "The post was not found.";
-    require_once POSTS_VIEWS . "/edit.tmpl.php"; // Отображаем форму с ошибкой
-    exit;
-}
+
 // Обработка отправленной формы (POST запрос)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fillable = ['title', 'descr', 'content'];
@@ -41,5 +36,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $data['slug'] = str_replace(" ", "-", $data['title']);
     }
 }
-
 require_once POSTS_VIEWS . "/edit.tmpl.php";

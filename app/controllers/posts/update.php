@@ -50,16 +50,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!$validator->hasErrors()) {
         $data['slug'] = str_replace(" ", "-", $data['title']);
         $sql = "UPDATE posts SET title = ?, slug = ?, descr = ?, content = ? WHERE post_id = ?";
-        
+
         if ($db->query($sql, [$data['title'], $data['slug'], $data['descr'], $data['content'], $post_id])) {
-            
+
             $_SESSION['success'] = "The post has been successfully changed.";
             redirect(PATH);
-            
+
         } else {
             $_SESSION['warning'] = "Error updating the post.";
             redirect('');
-            
+
         }
     } else {
         $_SESSION['errors'] = $validator->getErrors();
@@ -69,5 +69,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 header("Location: /posts/edit?id={$post_id}");
-exit;
-?>

@@ -26,19 +26,20 @@ require_once VIEWS . '\components\header.php';
           <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" value="<?= htmlspecialchars($form_data['password'] ?? '') ?>">
           <?= isset($validator) ? $validator->listErrors('password') : "" ?>
         </div>
-        <div id="passwordHelp" class="form-text">The password must contain (at least 6 characters, including at least one uppercase letter, one digit, and one special character)</div>
-        <label>
+         <label>
           <input type="checkbox" class="password-checkbox" data-password-field="password">
-          Показать пароль
+          Show password
         </label>
+        <div id="passwordHelp" class="form-text">The password must contain (at least 6 characters, including at least one uppercase letter, one digit, and one special character)</div>
+       
 
 
-        <div class="mt-3 mb-3">
+        <div class="mt-4 mb-3">
           <label for="password_confirmation" class="form-label">Confirm password</label>
           <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="<?= htmlspecialchars($form_data['password_confirmation'] ?? '') ?>">
           <?= isset($validator) ? $validator->listErrors('password_confirmation') : "" ?>
           <label>
-            <input type="checkbox" class="password-checkbox" data-password-field="password_confirmation">Показать пароль
+            <input type="checkbox" class="password-checkbox" data-password-field="password_confirmation">Show password
           </label>
         </div>
 

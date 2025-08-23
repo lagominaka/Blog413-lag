@@ -31,12 +31,14 @@
               <a class="nav-link" href="posts/create">New Post</a>
             </li>
           </ul>
-          <div class="ms-auto">
+         <div class="d-flex">
+          <div class="ms-auto me-2">
             <a href="users" class="btn btn-success registration-button" role="button">Registration</a>
            </div>
           <div class="ms-auto">
             <a href="users/login" class="btn btn-success" role="button">Log in</a>
             </div>
+            </div> 
         </div>
      
     </nav>

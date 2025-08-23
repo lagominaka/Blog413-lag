@@ -2,8 +2,6 @@
 
 class Router
 {
-
-
     private $uri;
     private $method;
     private $routes = []; //все маршруты какие есть в routes.php
@@ -50,4 +48,8 @@ class Router
     {
         $this->add($uri, $controller, "DELETE");
     }
+    public function put($uri, $controller)
+    {
+        $this->add($uri, $controller, "PUT");
+}
 }

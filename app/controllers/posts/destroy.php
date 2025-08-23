@@ -5,7 +5,7 @@ $data = (file_get_contents('php://input'));
 
 
 $api_data = json_decode($data, true);
-// dump($api_data); //NULL или json
+// dump($api_data);
 
 $data = $api_data ?? $_POST;
 $id = (int)$data['id'] ?? 0;
