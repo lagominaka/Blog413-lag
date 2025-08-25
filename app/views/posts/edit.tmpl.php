@@ -1,36 +1,49 @@
 <?php
-
 require_once VIEWS . '\components\header.php';
 ?>
 <main class="container py-3 ">
-
     <div class="container row">
         <div class="col-10">
             <div class="col-10">
-                <h3 class="mt-3"><span class="me-2">Edit Post</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                    </svg>
-                </h3>
-                <form action="posts/update" method="POST">
-                    <input type="hidden" name="post_id" value="<?= (int)$post['post_id'] ?>">
+                <h3>Edit Post</h3>
+                <h1><?= $header ?? "" ?></h1>
+                <form action="posts" method="POST">
+                    <input type="hidden" name="_method" value="put">
+                    <input type="hidden" name="id" value="<?= $post['post_id'] ?>">
 
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Post title" value="<?= htmlspecialchars($post['title']) ?>">
-
-                    </div>
-                    <!-- описание -->
-                    <div class="mb-3">
-                        <label for="descr" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="descr" name="descr" placeholder="Post description" value="<?= htmlspecialchars($post['descr']) ?>">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control"
+                            value="<?= $_SESSION['old_input']['title'] ?? ($post['title'] ?? '') ?>">
+                        <?php if (isset($_SESSION['errors']['title']) && isset($post)): ?>
+                            <?php foreach ($_SESSION['errors']['title'] as $error): ?>
+                                <div class="text-danger"><?= htmlspecialchars($error) ?></div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
 
                     <div class="mb-3">
-                        <label for="content" class="form-label">Content</label>
-                        <textarea type="text" class="form-control" id="content" name="content" rows="15" placeholder="Post content"><?= htmlspecialchars($post['content']) ?></textarea>
+                        <label for="descr">Description</label>
+                        <input type="text" class="form-control" id="descr" name="descr"
+                            value="<?= $_SESSION['old_input']['descr'] ?? ($post['descr'] ?? '') ?>">
+                        <?php if (isset($_SESSION['errors']['descr']) && isset($post)): ?>
+                            <?php foreach ($_SESSION['errors']['descr'] as $error): ?>
+                                <div class="text-danger"><?= htmlspecialchars($error) ?></div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="content">Content</label>
+                        <textarea class="form-control" id="content" name="content"
+                            rows="15"><?= $_SESSION['old_input']['content'] ?? ($post['content'] ?? '') ?></textarea>
+                        <?php if (isset($_SESSION['errors']['content']) && isset($post)): ?>
+                            <?php foreach ($_SESSION['errors']['content'] as $error): ?>
+                                <div class="text-danger"><?= htmlspecialchars($error) ?></div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
@@ -38,4 +51,6 @@ require_once VIEWS . '\components\header.php';
 </main>
 <?php
 require_once VIEWS . '\components\footer.php';
+unset($_SESSION['errors']);
+unset($_SESSION['old_input']);
 ?>

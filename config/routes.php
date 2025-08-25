@@ -9,10 +9,10 @@ $router->get("posts", "/posts/show.php"); //один из ресурсов
 $router->get("posts/create", "/posts/create.php"); //форма создания нового маршрута
 $router->post("posts", "/posts/store.php");
 $router->get("posts/edit", "/posts/edit.php");
-$router->post("posts/update", "/posts/update.php");
-// $router->get("posts/show", "/posts/show.php");
+$router->put("posts", "/posts/update.php");
 
-$router->get("contacts", "/contacts.php");
+
+$router->patch('posts', 'posts/rates.php');
 $router->delete("posts", "/posts/destroy.php");
 
 //USERS
@@ -23,6 +23,9 @@ $router->get("users/login", "/users/login.php");
 $router->post("users/login", "/users/login.php");
 $router->get("users/reset-password", "/users/reset-password.php");
 $router->post("users/reset-password", "/users/reset-password.php");
+
+//Pages
+$router->get("contacts", "/contacts.php");
 
 //USERS
 // Verb   URI                  Action          Route Name

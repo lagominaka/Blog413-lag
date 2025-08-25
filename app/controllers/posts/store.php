@@ -24,16 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'required' => true,
             'min' => 5,
         ],
-        'email' => [
-            'email' => true,
-        ],
-        'password' => [
-            'required' => true,
-            'min' => 6,
-        ],
-        'password_confirm' => [
-            'match' => 'password',
-        ]
+        // 'email' => [
+        //     'email' => true,
+        // ],
+        // 'password' => [
+        //     'required' => true,
+        //     'min' => 6,
+        // ],
+        // 'password_confirm' => [
+        //     'match' => 'password',
+        // ]
 
     ];
     $validator = new Validator();
